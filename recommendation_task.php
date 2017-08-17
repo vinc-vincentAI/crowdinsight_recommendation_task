@@ -1,16 +1,8 @@
 <?php 
 
-declare(strict_types=1);
 namespace PhpmlExamples;
 
-include 'vendor/autoload.php';
 include 'recommendation_task_function.php';
-
-use Phpml\CrossValidation\StratifiedRandomSplit;
-use Phpml\Dataset\Demo\WineDataset;
-use Phpml\Metric\Accuracy;
-use Phpml\Regression\SVR;
-use Phpml\SupportVectorMachine\Kernel;
 
 $myfile = fopen("rs.csv", "r") or die("Unable to open file!");
 $raw_data =  fread($myfile,filesize("rs.csv"));
@@ -55,13 +47,13 @@ foreach( $pieces as $piece )
 
 // var_dump($person_data);
 
-//推荐概率计算
+//鎺ㄨ崘姒傜巼璁＄畻
 
-$training_probability =  probability($training_array);//引用自recommendation_task_function.php中的函数
+$training_probability =  probability($training_array);//寮曠敤鑷猺ecommendation_task_function.php涓殑鍑芥暟
 
 
 $person_data = $validation_array;
-$person_data_probability =  probability($person_data);//引用自recommendation_task_function.php中的函数
+$person_data_probability =  probability($person_data);//寮曠敤鑷猺ecommendation_task_function.php涓殑鍑芥暟
 $diff_count = 0;
 $diff = 0;
 $person_data_probability_keys = array_keys($person_data_probability);
